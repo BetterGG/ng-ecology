@@ -1,0 +1,168 @@
+/**
+ * 主要使用在 移动端 中
+ * 主要使用在 移动端 中
+ * 主要使用在 移动端 中
+ */
+
+// 基础类型颜色
+$color-primary: #1890ff;
+$color-success: #52c41a;
+$color-warning: #faad14;
+$color-danger: #ff4d4f;
+$color-purple: rgb(117, 117, 255);
+
+// 文字颜色
+$text-color-placeholder: #cccccc;
+$text-color-lightGray: #999999;
+$text-color-gray: #666666;
+$text-color-darkGray: #333333;
+$text-color-default: rgba(0, 0, 0, 0.85);
+$text-color-white: #ffffff;
+
+// 字体大小
+$f-s-default-max: 32px;
+$f-s-default-big: 30px;
+$f-s-default: 28px;
+$f-s-default-small: 26px;
+$f-s-default-min: 24px;
+
+// 行高
+$l-h-default-max: 38px;
+$l-h-default-big: 36px;
+$l-h-default: 34px;
+$l-h-default-small: 32px;
+$l-h-default-min: 30px;
+
+// 背景色
+$bg-color-default: rgb(240, 240, 245);
+$bg-color-main: rgb(255, 255, 255);
+
+// border 线
+$border-lightGray: 1px solid #cccccc;
+
+/**
+ * 提交按钮，一个按钮占一行的
+ */
+@mixin btn-submit() {
+  padding: 20px 36px;
+  color: #ffffff;
+  border-radius: 10px;
+  background-color: $color-primary;
+  font-size: $f-s-default;
+}
+/**
+ * 设置 input 的 placeholder 的颜色
+ * 设置 textarea 的 placeholder 的颜色
+ */
+@mixin setPlaceholderColor($color: $text-color-placeholder) {
+  input::-webkit-input-placeholder {
+    color: $color;
+    font-size: $f-s-default;
+  }
+}
+@mixin setTxtPlaceholderColor($color: $text-color-placeholder) {
+  textarea::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+/**
+ * 文字后的星号（必填标识）
+ */
+@mixin requiredAfter($left: 10px) {
+  &::after {
+    content: "*";
+    color: $color-danger;
+    position: relative;
+    left: $left;
+  }
+}
+/**
+ * 文字前的小竖杠
+ */
+@mixin titleBeforeLine($color: $color-primary) {
+  &::before {
+    position: absolute;
+    top: 14px;
+    left: 0;
+    display: block;
+    content: " ";
+    width: 8px;
+    height: 34px;
+    background-color: $color;
+    border-radius: 4px;
+  }
+}
+
+// 按钮形【状态】
+@mixin status-btn($color: $text-color-placeholder) {
+  color: $color;
+  border-color: $color;
+  background-color: rgba($color, 0.1);
+}
+
+// 底部按钮，单个
+@mixin btm-single-btn-box() {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 120px;
+  text-align: center;
+  overflow: hidden;
+  background-color: $bg-color-main;
+  border-top: 1px solid $text-color-lightGray;
+  .active-btn {
+    display: block;
+    width: 94%;
+    height: 80px;
+    color: #fff;
+    font-size: $f-s-default-max;
+    background-color: $text-color-gray;
+    margin: 20px 20px;
+    border-radius: 10px;
+    &.can {
+      background-color: $color-primary;
+    }
+  }
+  @supports (bottom: env(safe-area-inset-bottom)) {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 120px);
+  }
+}
+
+// 底部按钮，多个，等宽
+@mixin btm-more-btn-box() {
+  display: flex;
+  height: 120px;
+  height: calc(120px + env(safe-area-inset-bottom)); /* 兼容 iOS >= 11.2 */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  z-index: 10;
+  font-size: $f-s-default-max;
+  border-top: 1px solid $text-color-lightGray;
+  .tab-item {
+    flex: 1;
+    text-align: center;
+    img {
+      width: 40px;
+      height: 40px;
+      margin: 18px 0;
+    }
+    .tab-name {
+      height: 40px;
+    }
+  }
+}
+
+// 文字超出显示省略号
+@mixin ellipsis-line($line: 1) {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  line-clamp: $line;
+  -webkit-box-orient: vertical;
+}

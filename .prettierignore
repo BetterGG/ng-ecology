@@ -1,0 +1,13 @@
+# See https://www.prettier.cn/docs/ignore.html for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# IDEs and editors
+.idea/
+
+# Visual Studio Code
+.vscode/*

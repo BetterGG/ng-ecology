@@ -1,0 +1,23 @@
+<div class="table-page">
+  <div class="content">
+    <app-dragSortTable *ngIf="type === 'dragSort'"></app-dragSortTable>
+    <app-childTable *ngIf="type === 'child'"></app-childTable>
+  </div>
+  <ul class="menu">
+    <li
+      class="menu-item"
+      [ngClass]="{ active: type === 'dragSort' }"
+      (click)="type = 'dragSort'"
+    >
+      拖拽排序
+    </li>
+    <li
+      class="menu-item"
+      [ngClass]="{ active: type === 'child' }"
+      (click)="type = 'child'"
+    >
+      嵌套子表格
+    </li>
+    <!--      <li class="menu-item">拖拽排序</li>-->
+  </ul>
+</div>

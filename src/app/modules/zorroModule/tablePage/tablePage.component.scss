@@ -1,0 +1,21 @@
+@import "src/assets/styles/common";
+
+.table-page {
+  display: flex;
+  .content {
+    flex: 1;
+  }
+  .menu {
+    width: 120px;
+    padding: 20px 10px;
+    border-radius: 5px;
+    background-color: $bg-color-default;
+    .menu-item {
+      cursor: pointer;
+      padding: 5px 0;
+      &.active {
+        color: $color-primary;
+      }
+    }
+  }
+}
